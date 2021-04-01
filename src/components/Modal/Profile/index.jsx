@@ -4,11 +4,14 @@ import trash from '../../../assets/icons/trash.svg'
 import pencil from '../../../assets/icons/pencil.svg'
 import close from '../../../assets/icons/close.svg'
 
+import {useHistory} from 'react-router-dom';
+
 import {handleDeleteNaver} from '../../../services/requests'
 
 import {Container, ContainerModal, Content, Actions, InfoContent, CloseButton} from './styles'
 
 const ModalProfile = ({data, handleClose, show}) => {
+  const history = useHistory();
 
   const getAge = (age) => {
     const currentDate = new Date();
@@ -61,7 +64,10 @@ const ModalProfile = ({data, handleClose, show}) => {
             <div style={{cursor: 'pointer'}} onClick={() => handleDelete(data.id)}>
               <img src={trash} alt='trash'></img>
             </div>
-            <div style={{cursor: 'pointer'}}>
+            <div style={{cursor: 'pointer'}} onClick={() => history.push({
+                    pathname: '/add-user',
+                    state: {detail: data}
+                  })}>
               <img src={pencil} alt='pencil'></img>
             </div>
           </Actions>
