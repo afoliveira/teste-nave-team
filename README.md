@@ -1,9 +1,7 @@
 <h1 align="center">Teste Front-End Nave.rs</h1>
 
-O intuito desse projeto é fazer a página inicial de um e-commerce consumindo uma api fornecida
-pela própria Corebiz, para trazer o seus produtos. Outro foco importante é as sua newslatter
-onde será feito um post das informações preenchidas na NewsLatter para uma API também fornecida
-pela Corebiz.
+O intuito desse projeto é fazer um pequeeno dashboard onde há uma autenticação de usuário, e dentro da página principal
+pode se criar, editar, deletar e listar um usuário.
 
 ## Instalação
 
