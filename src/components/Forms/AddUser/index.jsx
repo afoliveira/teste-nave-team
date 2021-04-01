@@ -5,6 +5,7 @@ import Button from '../../Button';
 import Input from '../../Inputs'
 import Header from '../../Header';
 import GeneralModal from '../../Modal/General';
+import { toast } from "react-toastify"
 
 import api from '../../../services/api'
 
@@ -76,6 +77,7 @@ const AddUser = (props) => {
           }
         )
         .then((response) => {
+          console.log(response)
           if(response.status === 200) {
             setCreated(true)
             setTimeout(() => {
@@ -85,11 +87,12 @@ const AddUser = (props) => {
           }
         })
         .catch((err) => {
-          console.log(
+          console.log(err);
+          toast.error(
             err.response && err.response.data
               ? err.response.data.message
               : { message: "Não foi possivel editar o seu usuário" }
-          );
+          )
         });
     } else {
       const token = window.localStorage.getItem("token");
@@ -111,11 +114,11 @@ const AddUser = (props) => {
         }
       })
       .catch((err) => {
-        console.log(
+        toast.error(
           err.response && err.response.data
             ? err.response.data.message
             : { message: "Não foi possivel criar o seu usuário" }
-        );
+        )
       });
     }
   }

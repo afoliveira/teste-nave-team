@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 import api from "./api";
 
 export const handleLogin = async (body) => {
@@ -48,7 +49,7 @@ export const handleGetUserInformations = async (id) => {
       return response.data;
     })
     .catch((err) => {
-      console.log(
+      toast.error(
         err.response && err.response.data
           ? err.response.data.message
           : { message: "Não foi possivel trazer os dados desse usuário" }
@@ -114,7 +115,7 @@ export const handleDeleteNaver = async (id) => {
       return response.data;
     })
     .catch((err) => {
-      console.log(
+      toast.error(
         err.response && err.response.data
           ? err.response.data.message
           : { message: "Não foi possivel excluir o usuário" }
