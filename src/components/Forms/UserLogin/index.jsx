@@ -28,6 +28,7 @@ const LoginForm = () => {
           placeholder='E-mail' 
           onChange={({target}) => setEmail(target.value)}
           value={email}
+          error={!email ? 'Digite seu e-mail' : ''}
         />
         <Input 
           width='384px' 
@@ -37,6 +38,7 @@ const LoginForm = () => {
           placeholder='Senha' 
           onChange={({target}) => setPassword(target.value)}
           value={password}
+          error={!password ? 'Digite sua senha' : ''}
         />
         <Button padding='120.7px' width='384px'>Entrar</Button>
       </form>

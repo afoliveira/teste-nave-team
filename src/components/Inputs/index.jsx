@@ -1,9 +1,9 @@
 import React from 'react'
-import {Label, TextInput} from './styles'
+import {Label, TextInput, TextError, Container} from './styles'
 
-const Input = ({label, type, name, placeholder, width, onChange, value, required}) => {
+const Input = ({label, type, name, placeholder, width, onChange, value, required, error}) => {
   return (
-    <div>
+    <Container>
       <Label className='label' htmlFor={name}>{label}</Label>
       <TextInput
         required={required}
@@ -16,7 +16,8 @@ const Input = ({label, type, name, placeholder, width, onChange, value, required
         onChange={onChange}
         value={value}
       />
-    </div>
+      <TextError>{error ? error : ''}</TextError>
+    </Container>
   )
 }
 

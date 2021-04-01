@@ -12,7 +12,6 @@ import api from '../../../services/api'
 import arrow from '../../../assets/icons/arrow-left.svg'
 import { Form, Container, ContainerHeader } from './styles';
 
-import {handleCreateNaver, handleEditNaver} from '../../../services/requests'
 
 const AddUser = (props) => {
   const [nome, setNome] = useState();
@@ -22,13 +21,10 @@ const AddUser = (props) => {
   const [projetos, setProjetos] = useState('');
   const [urlNaver, setUrlNaver] = useState('');
   const [created, setCreated] = useState(false);
+  const [error, setError] = useState(false)
   const history = useHistory()
 
-  // const {name, job_role, admission_date, birthdate, project, url, user_id} = location?.state?.detail;
   
-  
-  
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   const getData = () => {
     setNome(props?.location?.state?.detail?.name)
     setCargo(props?.location?.state?.detail?.job_role)
@@ -147,6 +143,7 @@ const AddUser = (props) => {
             placeholder='Nome'
             onChange={({target}) => setNome(target.value)}
             value={nome}
+            error={!nome ? 'Digite um nome' : ''}
           />
           <Input
             required
@@ -156,6 +153,7 @@ const AddUser = (props) => {
             placeholder='Cargo'
             onChange={({target}) => setCargo(target.value)}
             value={cargo}
+            error={!cargo ? 'Digite o seu cargo' : ''}
           />
           <Input
             required
@@ -165,6 +163,7 @@ const AddUser = (props) => {
             placeholder='Data de Nascimento'
             onChange={({target}) => setIdade(target.value)}
             value={idade}
+            error={!idade ? 'Digite seu data de nascimento' : ''}
           />
           <Input
             required
@@ -174,6 +173,7 @@ const AddUser = (props) => {
             placeholder='Dia de admissão'
             onChange={({target}) => setTempoEmpresa(target.value)}
             value={tempoEmpresa}
+            error={!tempoEmpresa ? 'Digite sua data de admissão' : ''}
           />
           <Input
             required
@@ -183,6 +183,7 @@ const AddUser = (props) => {
             placeholder='Projetos'
             onChange={({target}) => setProjetos(target.value)}
             value={projetos}
+            error={!projetos ? 'Digite pelo menos um projeto' : ''}
           />
           <Input
             required
@@ -192,6 +193,7 @@ const AddUser = (props) => {
             placeholder='URL da foto do Naver'
             onChange={({target}) => setUrlNaver(target.value)}
             value={urlNaver}
+            error={!urlNaver ? 'Cole a url da sua foto' : ''}
           />
         </Form>
         <Button onClick={handleSubmit} customStyle={{aligSelf: 'flex-end'}}>Salvar</Button>   
