@@ -27,5 +27,5 @@ Iniciará o projeto em ambiente de Desenvolvimento.
 Abra [http://localhost:3000](http://localhost:3000)
 
 ## Credenciais usadas no teste:
-login: testing-user@nave.rs
-senha: nave1234
+<p>login: testing-user@nave.rs</p>
+<p>senha: nave1234</p>
