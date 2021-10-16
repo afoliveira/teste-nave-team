@@ -36,8 +36,11 @@
       "react/static-property-placement": "off",
       "react/jsx-props-no-spreading": "off",
       "react/prop-types": "off",
+      "react/destructuring-assignment": "off",
       "class-methods-use-this": "off",
       "no-param-reassign": "off",
-      "no-console": "off"
+      "no-console": "off",
+      "camelcase": "off",
+      "no-shadow": "off"
     }
   }
