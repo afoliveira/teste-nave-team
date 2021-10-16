@@ -1,5 +1,5 @@
-import React, {createContext, useState, useEffect} from 'react'
-import {handleLogin, handleGetUser} from '../services/requests'
+import React, {createContext, useState} from 'react'
+import {handleLogin, handleGetUser} from '../services/api'
 import {useHistory} from 'react-router-dom'
 
 export const UserContext = createContext()

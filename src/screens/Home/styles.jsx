@@ -23,7 +23,6 @@ export const ContainerContent = styled.ul`
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
 `;
 
 export const Content = styled.li`
@@ -31,6 +30,7 @@ export const Content = styled.li`
   flex-direction: column;
   flex-wrap: wrap;
   margin-top: 32px;
+  margin-right: 32px;
   
   .name {
     text-transform: capitalize;
