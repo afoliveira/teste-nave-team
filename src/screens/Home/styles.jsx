@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
@@ -23,7 +23,6 @@ export const ContainerContent = styled.ul`
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
 `;
 
 export const Content = styled.li`
@@ -31,7 +30,8 @@ export const Content = styled.li`
   flex-direction: column;
   flex-wrap: wrap;
   margin-top: 32px;
-  
+  margin-right: 32px;
+
   .name {
     text-transform: capitalize;
     font-weight: 600;
@@ -46,13 +46,12 @@ export const Content = styled.li`
     text-transform: capitalize;
     font-size: 1rem;
     line-height: 1.5rem;
-    margin-bottom: 10px
+    margin-bottom: 10px;
   }
 
   .photo {
     cursor: pointer;
   }
-
 `;
 
 export const Actions = styled.div`

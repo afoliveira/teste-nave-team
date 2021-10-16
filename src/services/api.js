@@ -1,13 +1,13 @@
-import axios from "axios";
-import { toast } from "react-toastify";
+import axios from 'axios';
+import { toast } from 'react-toastify';
 
 export const api = axios.create({
-  baseURL: "https://navedex-api.herokuapp.com/v1/",
+  baseURL: 'https://navedex-api.herokuapp.com/v1/',
 });
 
 export const handleLogin = async (body) => {
   return api
-    .post("users/login", {
+    .post('users/login', {
       ...body,
     })
     .then((response) => {
@@ -17,14 +17,14 @@ export const handleLogin = async (body) => {
       console.log(
         err.response && err.response.data
           ? err.response.data.message
-          : { message: "Deu ruim" }
+          : { message: 'Deu ruim' }
       );
     });
 };
 
 export const handleGetUser = async (token) => {
   return api
-    .get("/navers", {
+    .get('/navers', {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -36,13 +36,13 @@ export const handleGetUser = async (token) => {
       console.log(
         err.response && err.response.data
           ? err.response.data.message
-          : { message: "Não foi possivel trazer o usuário" }
+          : { message: 'Não foi possivel trazer o usuário' }
       );
     });
 };
 
 export const handleGetUserInformations = async (id) => {
-  const token = window.localStorage.getItem("token");
+  const token = window.localStorage.getItem('token');
   return api
     .get(`/navers/${id}`, {
       headers: {
@@ -56,16 +56,16 @@ export const handleGetUserInformations = async (id) => {
       toast.error(
         err.response && err.response.data
           ? err.response.data.message
-          : { message: "Não foi possivel trazer os dados desse usuário" }
+          : { message: 'Não foi possivel trazer os dados desse usuário' }
       );
     });
 };
 
 export const handleCreateNaver = async (body) => {
-  const token = window.localStorage.getItem("token");
+  const token = window.localStorage.getItem('token');
   return api
     .post(
-      "/navers",
+      '/navers',
       { ...body },
       {
         headers: { Authorization: `Bearer ${token}` },
@@ -79,13 +79,13 @@ export const handleCreateNaver = async (body) => {
       console.log(
         err.response && err.response.data
           ? err.response.data.message
-          : { message: "Não foi possivel criar o seu usuário" }
+          : { message: 'Não foi possivel criar o seu usuário' }
       );
     });
 };
 
 export const handleEditNaver = async (data, id) => {
-  const token = window.localStorage.getItem("token");
+  const token = window.localStorage.getItem('token');
   return api
     .put(
       `/navers/${id}`,
@@ -101,13 +101,13 @@ export const handleEditNaver = async (data, id) => {
       console.log(
         err.response && err.response.data
           ? err.response.data.message
-          : { message: "Não foi possivel editar o seu usuário" }
+          : { message: 'Não foi possivel editar o seu usuário' }
       );
     });
 };
 
 export const handleDeleteNaver = async (id) => {
-  const token = window.localStorage.getItem("token");
+  const token = window.localStorage.getItem('token');
   return api
     .delete(`navers/${id}`, {
       headers: {
@@ -122,7 +122,7 @@ export const handleDeleteNaver = async (id) => {
       toast.error(
         err.response && err.response.data
           ? err.response.data.message
-          : { message: "Não foi possivel excluir o usuário" }
+          : { message: 'Não foi possivel excluir o usuário' }
       );
     });
 };
