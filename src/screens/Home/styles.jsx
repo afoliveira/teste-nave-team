@@ -31,7 +31,6 @@ export const Content = styled.li`
   flex-wrap: wrap;
   margin-top: 32px;
   margin-right: 32px;
-
   .name {
     text-transform: capitalize;
     font-weight: 600;
