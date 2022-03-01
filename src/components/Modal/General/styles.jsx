@@ -21,47 +21,38 @@ export const ContainerModal = styled.div`
   right: 0;
   left: 0;
   bottom: 0;
-  padding: 32px;
+  padding: 2rem;
   z-index: 1030;
+`;
 
-  .title {
-    font-size: 1.5rem;
-    font-weight: 600;
-    line-height: 36px;
-    margin-bottom: 24px;
-  }
+export const ModalTitle = styled.h2`
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 2.25rem;
+  margin-bottom: 1.5rem;
+`;
 
-  .phrase {
-    margin-bottom: 41px;
-  }
+export const ModalInfo = styled.p`
+  margin-bottom: 2.56rem;
+`;
 
-  .actions {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-  }
+export const Actions = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+`;
 
-  .btn-actions {
-    width: 176px;
-    height: 40px;
-    font-weight: 600;
-    font-size: 0.875rem;
-  }
+export const ActionsButton = styled.button`
+  width: 176px;
+  height: 40px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  background-color: ${(props) => (props.colorBlack ? '#000' : '#fff')};
+  border: ${(props) => (props.colorBlack ? 'none' : 'solid 1px #000')};
+  color: ${(props) => (props.colorBlack ? '#fff' : '#000')};
 
-  .btn-actions:first-child {
+  &:first-child {
     margin-right: 24px;
-  }
-
-  .withe {
-    background-color: #fff;
-    border: solid 1px #000;
-    color: #000;
-  }
-
-  .black {
-    background-color: #000;
-    color: #fff;
-    border: none;
   }
 `;
 
@@ -69,4 +60,5 @@ export const CloseButton = styled.div`
   align-self: flex-end;
   width: 24px;
   height: 24px;
+  cursor: pointer;
 `;

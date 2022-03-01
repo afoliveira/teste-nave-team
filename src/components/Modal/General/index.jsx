@@ -1,36 +1,34 @@
 import React from 'react';
-import close from '../../../assets/icons/close.svg';
-import { Container, ContainerModal, CloseButton } from './styles';
+import {
+  Container,
+  ContainerModal,
+  ModalTitle,
+  ModalInfo,
+  Actions,
+  ActionsButton,
+  CloseButton,
+} from './styles';
+import { ReactComponent as Close } from '../../../assets/icons/close.svg';
 
 const GeneralModal = ({ title, phrase, isDelete, onDelete, onclose }) => {
   return (
     <Container>
       <ContainerModal>
         <CloseButton onClick={() => onclose()}>
-          <img src={close} alt="close button" />
+          <Close />
         </CloseButton>
-        <h2 className="title">{title}</h2>
-        <p className="phrase">{phrase}</p>
+        <ModalTitle className="title">{title}</ModalTitle>
+        <ModalInfo className="phrase">{phrase}</ModalInfo>
 
-        {isDelete ? (
-          <div className="actions">
-            <button
-              type="button"
-              onClick={() => onclose()}
-              className="btn-actions white"
-            >
+        {isDelete && (
+          <Actions>
+            <ActionsButton type="button" onClick={() => onclose()}>
               Cancelar
-            </button>
-            <button
-              type="button"
-              onClick={() => onDelete()}
-              className="btn-actions black"
-            >
+            </ActionsButton>
+            <ActionsButton type="button" onClick={() => onDelete()} colorBlack>
               Excluir
-            </button>
-          </div>
-        ) : (
-          <></>
+            </ActionsButton>
+          </Actions>
         )}
       </ContainerModal>
     </Container>
