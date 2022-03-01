@@ -25,32 +25,32 @@ export const ContainerContent = styled.ul`
   align-items: center;
 `;
 
-export const Content = styled.li`
+export const Naver = styled.li`
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   margin-top: 32px;
   margin-right: 32px;
-  .name {
-    text-transform: capitalize;
-    font-weight: 600;
-    font-size: 1rem;
-    line-height: 1.125rem;
-    margin-top: 16px;
-    margin-bottom: 4px;
-  }
+`;
 
-  .job {
-    font-weight: 400;
-    text-transform: capitalize;
-    font-size: 1rem;
-    line-height: 1.5rem;
-    margin-bottom: 10px;
-  }
+export const NaverName = styled.span`
+  text-transform: capitalize;
+  font-weight: 600;
+  line-height: 1.125rem;
+  margin-top: 1rem;
+  margin-bottom: 0.25rem;
+`;
 
-  .photo {
-    cursor: pointer;
-  }
+export const NaverJob = styled.span`
+  text-transform: capitalize;
+  line-height: 1.5rem;
+  margin-bottom: 0.625rem;
+`;
+
+export const NaverPhoto = styled.img`
+  width: 280px;
+  height: 280px;
+  cursor: pointer;
 `;
 
 export const Actions = styled.div`
@@ -58,4 +58,8 @@ export const Actions = styled.div`
   align-items: center;
   justify-content: space-between;
   width: 60px;
+`;
+
+export const ActionsItem = styled.div`
+  cursor: pointer;
 `;

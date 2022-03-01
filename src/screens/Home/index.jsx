@@ -8,9 +8,13 @@ import GeneralModal from '../../components/Modal/General';
 import {
   Container,
   ContainerHeader,
-  Content,
+  Naver,
   Actions,
   ContainerContent,
+  ActionsItem,
+  NaverPhoto,
+  NaverJob,
+  NaverName,
 } from './styles';
 
 import trash from '../../assets/icons/trash.svg';
@@ -58,66 +62,53 @@ const Home = () => {
   };
 
   const handleDelete = async (id) => {
-    handleDeleteNaver(id)
-      .then((res) => {
-        console.log(res);
-        if (res.statusCode === 200) {
-          setOpenDelete(false);
-          setIsDeletedVisible(true);
-          setTimeout(() => {
-            window.location.reload();
-          }, 3000);
-        }
-      })
-      .catch((err) => console.log(err));
+    try {
+      const res = await handleDeleteNaver(id);
+      if (res.statusCode === 200) {
+        setOpenDelete(false);
+        setIsDeletedVisible(true);
+        setTimeout(() => {
+          window.location.reload();
+        }, 3000);
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
     <>
       <Header />
-      {show ? (
-        <ModalProfile data={item} show={show} handleClose={hideModal} />
-      ) : (
-        ''
-      )}
+      {show && <ModalProfile data={item} show={show} handleClose={hideModal} />}
       <Container>
         <ContainerHeader>
           <h2>Navers</h2>
           <Button onClick={() => history.push('/add-user')}>Adicionar</Button>
         </ContainerHeader>
-        <ContainerContent style={{ display: 'flex', alignItems: 'center' }}>
+        <ContainerContent>
           {data &&
             data.map((naver) => (
-              <Content key={naver.id} onClick={() => setItem(naver)}>
-                <div
-                  className="photo"
+              <Naver key={naver.id} onClick={() => setItem(naver)}>
+                <NaverPhoto
                   onClick={() => {
                     handleClick(naver.id);
                     showModal();
                   }}
-                  aria-hidden="true"
-                >
-                  <img
-                    width="280px"
-                    height="280px"
-                    src={naver.url}
-                    alt={naver.name}
-                  />
-                </div>
-                <span className="name">{naver.name}</span>
-                <span className="job">{naver.job_role}</span>
+                  src={naver.url}
+                  alt={naver.name}
+                />
+                <NaverName className="name">{naver.name}</NaverName>
+                <NaverJob className="job">{naver.job_role}</NaverJob>
                 <Actions>
-                  <div
-                    style={{ cursor: 'pointer' }}
+                  <ActionsItem
                     onClick={() => handleOpenDelete()}
                     role="button"
                     tabIndex={0}
                     aria-hidden="true"
                   >
                     <img src={trash} alt="trash" />
-                  </div>
-                  <div
-                    style={{ cursor: 'pointer' }}
+                  </ActionsItem>
+                  <ActionsItem
                     onClick={() =>
                       history.push({
                         pathname: '/add-user',
@@ -125,18 +116,18 @@ const Home = () => {
                       })
                     }
                     role="button"
-                    tabIndex={0}
+                    tabIndex={-1}
                     aria-hidden="true"
                   >
                     <img src={pencil} alt="pencil" />
-                  </div>
+                  </ActionsItem>
                 </Actions>
-              </Content>
+              </Naver>
             ))}
         </ContainerContent>
       </Container>
 
-      {openDelete ? (
+      {openDelete && (
         <GeneralModal
           title="Excluir Naver"
           phrase="Tem certeza que deseja excluir este Naver?"
@@ -144,18 +135,14 @@ const Home = () => {
           onclose={handleCloseDelete}
           onDelete={() => handleDelete(item.id)}
         />
-      ) : (
-        <></>
       )}
 
-      {isDeletedVisible ? (
+      {isDeletedVisible && (
         <GeneralModal
           title="Naver Excluido"
           phrase="Naver excluído com sucesso"
           onclose={handleCloseDeleted}
         />
-      ) : (
-        <></>
       )}
     </>
   );
